@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ababu - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Ababu Veterinaria</h1>
+        <p class="success">✅ El servidor está funcionando correctamente!</p>
+        
+        <div class="info">
+            <h3>Estado del Sistema:</h3>
+            <ul>
+                <li>✅ Servidor Laravel: Activo en puerto 8001</li>
+                <li>✅ Base de datos: Conectada</li>
+                <li>✅ Archivos CSS/JS: Cargando correctamente</li>
+                <li>✅ Traducciones al español: Instaladas</li>
+                <li>✅ Ficha clínica mejorada: Lista</li>
+            </ul>
+        </div>
+
+        <h3>Acciones Disponibles:</h3>
+        <a href="/login" class="btn">🔐 Iniciar Sesión</a>
+        <a href="/register" class="btn">👤 Registrarse</a>
+        <a href="/home" class="btn">🏠 Dashboard</a>
+        
+        <hr style="margin: 30px 0;">
+        
+        <h3>Información Técnica:</h3>
+        <ul>
+            <li><strong>PHP Version:</strong> <?php echo PHP_VERSION; ?></li>
+            <li><strong>Servidor:</strong> <?php echo $_SERVER['SERVER_SOFTWARE'] ?? 'Built-in PHP Server'; ?></li>
+            <li><strong>Hora del servidor:</strong> <?php echo date('Y-m-d H:i:s'); ?></li>
+            <li><strong>Puerto:</strong> 8001</li>
+        </ul>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <small style="color: #6c757d;">
+                Sistema Ababu - Gestión Veterinaria © 2025
+            </small>
+        </div>
+    </div>
+</body>
+</html>

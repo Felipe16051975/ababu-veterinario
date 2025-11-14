@@ -1,0 +1,68 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Help Language Lines
+    |--------------------------------------------------------------------------
+    */
+
+    'animalia_select' => 'Haga clic y comience a escribir las primeras letras del nombre científico de la especie (ej. Canis Lupus Familiaris)',
+    'clinic_address' => 'Dirección de la clínica.',
+    'clinic_city' => 'Ciudad donde está ubicada la clínica',
+    'clinic_code' => 'Código o ID utilizado para identificar tu clínica en tu país (opcional).',
+    'clinic_create' => 'Crea tu propia clínica en pocos pasos y comienza a trabajar inmediatamente.',
+    'clinic_country' => 'Establece el país donde está ubicada tu clínica y la lista de medicamentos y legislación relacionada. Este valor NO PUEDE ser cambiado después.',
+    'clinic_delete' => '¡¡¡Advertencia!!! Si presiona "eliminar", toda la información sobre tu clínica (es decir, animales, propietarios, visitas, eventos del calendario) se eliminará permanentemente. Esta acción no se puede deshacer.',
+    'clinic_description' => 'Escriba una breve descripción de su clínica',
+    'clinic_email' => 'Dirección de correo electrónico de la clínica',
+    'clinic_invite' => 'Escriba la dirección de correo electrónico de un veterinario para invitarlo a colaborar con su clínica',
+    'clinic_logo' => 'Suba una imagen que represente el logotipo de su empresa',
+    'clinic_join' => 'Únete a una clínica existente como Veterinario asociado escribiendo el código de clínica proporcionado por el administrador de tu clínica.',
+    'clinic_manager' => 'Gerente de Salud o Clínica',
+    'clinic_name' => 'El nombre corto de su clínica (ej. Clínica Dr. Dolittle)',
+    'clinic_not_configured' => 'No hay ninguna clínica configurada para su cuenta. Por favor... ',
+    'clinic_phone' => 'Número de teléfono de la clínica ',
+    'clinic_postcode' => 'Código postal de la clínica ',
+    'clinic_token_example' => 'ej. 6240b71-rugby310',
+    'clinic_website' => 'Dirección de internet / sitio web',
+    'contact_description' => 'reportar un error, escribir una mejora o solicitar una nueva característica',
+    'examination_delete' => '¿Realmente desea eliminar el examen seleccionado y toda la información relacionada?',
+    'note_delete' => '¿Realmente desea eliminar la nota seleccionada y toda la información relacionada?',
+    'owner_address' => '',
+    'owner_city' => '',
+    'owner_country' => '',
+    'owner_delete' => '¿Realmente desea eliminar el propietario seleccionado? Advertencia: ¡Esta operación también eliminará todas las mascotas relacionadas!',
+    'owners_description' => 'Lista de todos los propietarios de mascotas de la clínica',
+    'owner_email' => '',
+    'owner_firstname' => '',
+    'owner_lastname' => '',
+    'owner_phone_primary' => '',
+    'owner_phone_secondary' => '',
+    'owner_postcode' => '',
+    'owner_select' => 'Por favor, primero seleccione un propietario de la lista anterior, o agregue uno nuevo si no está presente.',
+    'owner_ssn' => '',
+    'pet_breed' => 'Especifique, si es necesario, la raza del animal',
+    'pet_color' => '',
+    'pet_date_of_birth' => 'Fecha de nacimiento',
+    'pet_date_of_death' => 'Fecha de fallecimiento',
+    'pet_delete' => '¿Realmente desea eliminar el animal/mascota seleccionado y toda la información relacionada?',
+    'pet_description' => '',
+    'pet_microchip' => 'Número de microchip',
+    'pet_microchip_location' => 'Ubicación del microchip (ej. cuello)',
+    'pet_name' => '',
+    'pet_sex' => '',
+    'pet_tatuatge' => 'Número de tatuaje o serie',
+    'pet_tatuatge_location' => 'Ubicación del tatuaje (ej. pata izquierda)',
+    'prescription_delete' => '¿Realmente desea eliminar la prescripción seleccionada y toda la información relacionada?',
+    'profile_update' => 'Actualización de perfil',
+    'species_add_common' => 'Agregar las especies más comunes a su clínica (recomendado). Una vez que su clínica haya sido creada, puede agregar, editar o eliminar especies desde el menú Clínica -> Especies.',
+    'species_admin' => 'Seleccione las especies que va a usar en su clínica (ej. perro, gato, búho). Puede elegir tantas especies como desee, aunque le sugerimos que elija las que realmente suponga que va a atender. Puede agregar una especie cuando quiera.',
+    'species_delete' => '¿Realmente desea eliminar la especie seleccionada?',
+    'species_select' => 'Haga clic y comience a escribir las primeras letras del nombre familiar de la especie (ej. Perro, Gato)',
+    'terms_of_service' => 'Al crear una cuenta, acepta los',
+    'treatment_delete' => '¿Realmente desea eliminar el tratamiento seleccionado y toda la información relacionada?',
+    'treatment_notes' => 'Escriba notas sobre el tratamiento (opcional)',
+    
+];

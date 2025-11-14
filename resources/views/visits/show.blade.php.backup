@@ -1,0 +1,976 @@
+<!-- style -->
+<style>
+    /* Clinical Record Header Styles */
+    .clinical-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 10px 10px 0 0;
+        padding: 20px;
+        margin-bottom: 0;
+    }
+    
+    .clinical-header h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+    }
+    
+    .clinical-header .pet-details {
+        font-size: 1.1rem;
+        margin-top: 8px;
+        opacity: 0.9;
+    }
+    
+    .clinical-header .owner-details {
+        font-size: 0.9rem;
+        margin-top: 10px;
+        opacity: 0.8;
+    }
+    
+    .clinical-header .owner-details a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .clinical-header .owner-details a:hover {
+        text-decoration: underline;
+        opacity: 1;
+    }
+
+    /* Clinical Body Styles */
+    .clinical-body {
+        background: #f8f9fa;
+        border-radius: 0 0 10px 10px;
+        padding: 25px;
+    }
+
+    /* Pet Information Panel */
+    .pet-info-panel {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+        border-left: 5px solid #667eea;
+    }
+
+    .pet-avatar img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border: 3px solid #e9ecef;
+    }
+
+    .pet-details-grid {
+        align-items: center;
+    }
+
+    .pet-details-grid label {
+        font-size: 0.85rem;
+        color: #6c757d;
+        font-weight: 600;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .detail-value {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    /* Section Cards */
+    .clinical-section {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        margin-bottom: 20px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 1px solid #e9ecef;
+    }
+    
+    .clinical-section:hover {
+        box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+        transform: translateY(-2px);
+    }
+    
+    .clinical-section-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 15px 20px;
+        border-bottom: 1px solid #dee2e6;
+        font-weight: 600;
+        color: #495057;
+        font-size: 1.1rem;
+    }
+    
+    .clinical-section-body {
+        padding: 20px;
+    }
+
+    /* Specific Section Colors */
+    .treatment-section .clinical-section-header {
+        background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+        color: #856404;
+        border-bottom-color: #ffeaa7;
+    }
+
+    .anamnesis-section .clinical-section-header {
+        background: linear-gradient(135deg, #e7f3ff 0%, #cce7ff 100%);
+        color: #004085;
+        border-bottom-color: #cce7ff;
+    }
+
+    .vitals-section .clinical-section-header {
+        background: linear-gradient(135deg, #d1f2eb 0%, #a3e4d7 100%);
+        color: #00695c;
+        border-bottom-color: #a3e4d7;
+    }
+
+    .protocols-section .clinical-section-header {
+        background: linear-gradient(135deg, #d4edda 0%, #b8e6c1 100%);
+        color: #155724;
+        border-bottom-color: #c3e6cb;
+    }
+
+    /* Anamnesis Tabs */
+    .anamnesis-tabs .nav-pills .nav-link {
+        border-radius: 8px;
+        margin: 0 2px;
+        font-size: 0.9rem;
+        padding: 8px 16px;
+        color: #6c757d;
+        background: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .anamnesis-tabs .nav-pills .nav-link.active {
+        background: #667eea;
+        color: white;
+        border-color: #667eea;
+    }
+
+    .anamnesis-tabs .nav-pills .nav-link:hover {
+        background: #5a6fd8;
+        color: white;
+        border-color: #5a6fd8;
+    }
+
+    .anamnesis-tabs textarea {
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    .anamnesis-tabs textarea:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+
+    /* Weight and Vitals */
+    .vitals-chart {
+        text-align: center;
+    }
+
+    .weight-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .weight-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #00695c;
+        margin-bottom: 10px;
+    }
+
+    .weight-chart {
+        width: 200px;
+        height: 100px;
+        margin: 10px 0;
+        background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #4caf50;
+    }
+
+    .chart-date {
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+
+    /* Empty States */
+    .empty-state {
+        color: #6c757d;
+    }
+
+    .empty-state i {
+        opacity: 0.5;
+    }
+
+    /* Action Buttons */
+    .header-actions {
+        font-size: 0.85rem;
+    }
+
+    .action-buttons .btn {
+        font-size: 0.85rem;
+    }
+
+    /* Treatment Summary */
+    .treatment-summary {
+        background: #fff;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 4px solid #856404;
+        font-style: italic;
+        color: #495057;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .clinical-header {
+            padding: 15px;
+        }
+        
+        .clinical-body {
+            padding: 15px;
+        }
+        
+        .clinical-section-body {
+            padding: 15px;
+        }
+        
+        .clinical-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .pet-details-grid .col-md-3 {
+            margin-bottom: 15px;
+        }
+        
+        .weight-value {
+            font-size: 1.5rem;
+        }
+        
+        .weight-chart {
+            width: 150px;
+            height: 80px;
+        }
+    }
+
+    /* Problem Section Specific Styles */
+    .problem-section .clinical-section-header {
+        background: #fff3cd;
+        color: #856404;
+        border-bottom-color: #ffeaa7;
+    }
+
+    /* Prescription Section Specific Styles */
+    .prescription-section .clinical-section-header {
+        background: #d1ecf1;
+        color: #0c5460;
+        border-bottom-color: #bee5eb;
+    }
+
+    /* Examination Section Specific Styles */
+    .examination-section .clinical-section-header {
+        background: #d4edda;
+        color: #155724;
+        border-bottom-color: #c3e6cb;
+    }
+
+    /* Tables Styles */
+    #examinations tbody tr.selected {
+        color: white;
+        background-color: #28a745 !important;
+    }
+
+    #examinations td {
+        border-left: none;
+        border-right: none;
+        padding: 12px 8px;
+    }
+
+    #prescriptions tbody tr.selected {
+        color: white;
+        background-color: #007bff !important;
+    }
+
+    #prescriptions td {
+        border-left: none;
+        border-right: none;
+        padding: 12px 8px;
+    }
+    
+    #problems tbody tr.selected {
+        color: white;
+        background-color: #ffc107 !important;
+    }
+    
+    #problems td {
+        border-left: none;
+        border-right: none;
+        padding: 12px 8px;
+    }
+
+    /* Scroll Areas */
+    .vertical-scroll {
+        height: 200px;
+        overflow-y: auto;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+    }
+
+    /* Control Icons */
+    td.details-control {
+        background: url('{{url('/images/icons/add.png')}}') no-repeat center center;
+        cursor: pointer;
+        width: 30px;
+        text-align: center;
+    }
+
+    tr.shown td.details-control {
+        background: url('{{url('/images/icons/delete.png')}}') no-repeat center center;
+    }
+    
+    /* Select2 Styling */
+    .select2-container--default .select2-selection--single {
+        height: 38px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+    
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 36px;
+        padding-left: 12px;
+    }
+
+    /* Toggle Button */
+    #toggle-original {
+        transition: all 0.3s ease;
+    }
+
+    #toggle-original:hover {
+        background: #6c757d;
+        color: white;
+    }
+</style>
+
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container-fluid">
+    <!-- card -->
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <!-- Clinical Record Header -->
+                <div class="clinical-header">
+                    <h2>
+                        <i class="fas fa-paw"></i>
+                        {{ $pet->name }} ({{ $pet->species->familiar_name }})
+                        <span class="badge badge-light ml-2">{{ $pet->sex }}</span>
+                    </h2>
+                    <div class="pet-details">
+                        <i class="fas fa-calendar-alt"></i>
+                        {{ __('translate.age') }}: {{ $pet->age->years }} {{ __('translate.years') }},
+                        {{ $pet->age->months }} {{ __('translate.months') }}, {{ $pet->age->days }}
+                        {{ __('translate.days') }}
+                        <span class="ml-4">
+                            <i class="fas fa-weight"></i>
+                            {{ __('translate.weight') }}: <span id="current-weight">{{ $pet->weight ?? 'N/A' }} kg</span>
+                        </span>
+                    </div>
+                    <div class="owner-details">
+                        <i class="fas fa-user"></i>
+                        <strong>{{ __('translate.owner') }}:</strong> {{ $pet->owner->fullname }}
+                        <a href="#" id="owner-details-phone" data-toggle="modal" data-target="#owner-overlay-modal">
+                            <i class="fas fa-phone"></i> {{ $pet->owner->phone }}
+                        </a>
+                        <a href="#" id="owner-details-mobile" data-toggle="modal" data-target="#owner-overlay-modal">
+                            <i class="fas fa-mobile-alt"></i> {{ $pet->owner->mobile }}
+                        </a>
+                        <a href="mailto:{{ $pet->owner->email }}">
+                            <i class="fas fa-envelope"></i> {{ $pet->owner->email }}
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Clinical Record Body -->
+                <div class="clinical-body">
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
+
+                    <!-- open modal if errors -->
+                    @if ($errors->any())
+                    @if($errors->has('pet_id'))
+                    <script>
+                        $(function() {
+                            openPetEditModal( {{$errors->first('pet_id')}} )
+                        })
+                    </script>
+                    @else
+                    <script>
+                        $(function() {
+                            $( "#pet-create-button" ).trigger( "click" );
+                        })
+                    </script>
+                    @endif
+                    @endif
+
+                    <!-- Pet Information Summary Panel -->
+                    <div class="row mb-4">
+                        <div class="col-lg-12">
+                            <div class="pet-info-panel">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="pet-avatar">
+                                            <img src="{{ $pet->avatar ?? url('/images/no-image-available.svg') }}" 
+                                                 class="img-fluid rounded-circle" alt="{{ $pet->name }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="row pet-details-grid">
+                                            <div class="col-md-3">
+                                                <label>{{ __('translate.species') }}</label>
+                                                <div class="detail-value text-primary">{{ $pet->species->familiar_name }}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>{{ __('translate.breed') }}</label>
+                                                <div class="detail-value">{{ $pet->breed ?? 'Mestizo' }}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>{{ __('translate.sex') }}</label>
+                                                <div class="detail-value">{{ $pet->sex == 'M' ? 'Macho' : 'Hembra' }}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>{{ __('translate.reproductive_status') }}</label>
+                                                <div class="detail-value">{{ $pet->reproductive_status ?? 'Esterilizado' }}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>{{ __('translate.age') }}</label>
+                                                <div class="detail-value">{{ $pet->age->years }} años</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>{{ __('translate.color') }}</label>
+                                                <div class="detail-value">{{ $pet->color ?? 'Sin indicar' }}</div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>{{ __('translate.microchip') }}</label>
+                                                <div class="detail-value">
+                                                    <input type="text" class="form-control form-control-sm" 
+                                                           placeholder="{{ __('translate.enter_microchip_number') }}" 
+                                                           value="{{ $pet->microchip ?? '' }}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="action-buttons">
+                                                    <button class="btn btn-sm btn-outline-primary">{{ __('translate.see_more') }} <i class="fas fa-chevron-down"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div class="row">
+                        <!-- Left Column - Clinical Assessment -->
+                        <div class="col-lg-8">
+                            <div class="row">
+                                <!-- Treatment and Weight Section -->
+                                <div class="col-12 mb-3">
+                                    <div class="clinical-section treatment-section">
+                                        <div class="clinical-section-header">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-syringe"></i> {{ __('translate.treatment') }}</span>
+                                                <div class="header-actions">
+                                                    <span class="text-warning"><i class="fas fa-lightbulb"></i> ¿Qué podemos mejorar?</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="clinical-section-body p-3">
+                                            <div class="treatment-summary">
+                                                Se invecta rimadyl 4.4 mg/kg
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Anamnesis Section -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="clinical-section anamnesis-section">
+                                        <div class="clinical-section-header">
+                                            <i class="fas fa-file-medical-alt"></i> {{ __('translate.anamnesis_remote') }}
+                                        </div>
+                                        <div class="clinical-section-body">
+                                            <div class="anamnesis-tabs">
+                                                <ul class="nav nav-pills nav-fill" id="anamnesis-tabs" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" data-toggle="pill" href="#antecedents" role="tab">
+                                                            {{ __('translate.antecedents') }}
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="pill" href="#feeding" role="tab">
+                                                            {{ __('translate.feeding') }}
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="pill" href="#diagnosis-tab" role="tab">
+                                                            {{ __('translate.diagnosis_plural') }}
+                                                        </a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" data-toggle="pill" href="#managements" role="tab">
+                                                            {{ __('translate.performed_managements') }}
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <div class="tab-content mt-3">
+                                                    <div class="tab-pane fade show active" id="antecedents" role="tabpanel">
+                                                        <textarea class="form-control" rows="4" 
+                                                                placeholder="Mestizo de Teckel">Mestizo de Teckel</textarea>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="feeding" role="tabpanel">
+                                                        <textarea class="form-control" rows="4" 
+                                                                placeholder="Tipo de alimentación y dieta">Cannes</textarea>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="diagnosis-tab" role="tabpanel">
+                                                        <textarea class="form-control" rows="4" 
+                                                                placeholder="Diagnósticos previos">Sin registro</textarea>
+                                                    </div>
+                                                    <div class="tab-pane fade" id="managements" role="tabpanel">
+                                                        <textarea class="form-control" rows="4" 
+                                                                placeholder="Manejos y tratamientos realizados">Sin registro</textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Patient Info & Vitals -->
+                        <div class="col-lg-4">
+                            <!-- Weight and Vitals Panel -->
+                            <div class="clinical-section vitals-section mb-3">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-chart-line"></i> Peso</span>
+                                        <span>Hematocrito</span>
+                                        <span>Glicemia</span>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body p-3">
+                                    <div class="vitals-chart">
+                                        <!-- Weight Chart Area -->
+                                        <div class="weight-display">
+                                            <div class="weight-value">15,6</div>
+                                            <div class="weight-chart">
+                                                <!-- Simple weight trend visualization -->
+                                                <canvas id="weight-chart" width="200" height="100"></canvas>
+                                            </div>
+                                            <div class="chart-date">12/11/25</div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <button class="btn btn-primary btn-sm btn-block">
+                                            <i class="fas fa-plus"></i> {{ __('translate.add_record') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preventive Protocols -->
+                            <div class="clinical-section protocols-section">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-shield-alt text-success"></i> {{ __('translate.preventive_protocols') }}</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> {{ __('translate.add_protocol') }}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body p-3">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ __('translate.protocol') }}</th>
+                                                <th>{{ __('translate.last_application') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2" class="text-muted text-center">
+                                                    {{ __('translate.no_visits_recorded') }}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="mt-3">
+                                        <button class="btn btn-outline-success btn-sm btn-block">
+                                            {{ __('translate.see_history') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Section - Full Width Panels -->
+                    <div class="row mt-4">
+                        <!-- Visit History -->
+                        <div class="col-lg-6">
+                            <div class="clinical-section">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-history text-success"></i> {{ __('translate.visit_history') }}</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            {{ __('translate.add_record') }}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body">
+                                    <div class="empty-state text-center py-4">
+                                        <i class="fas fa-calendar-times text-muted mb-2" style="font-size: 2rem;"></i>
+                                        <p class="text-muted">{{ __('translate.no_visits_recorded') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Controls -->
+                        <div class="col-lg-6">
+                            <div class="clinical-section">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-clock text-primary"></i> {{ __('translate.next_controls') }} / Recordatorios</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            {{ __('translate.add_record') }}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body">
+                                    <div class="empty-state text-center py-4">
+                                        <i class="fas fa-bell-slash text-muted mb-2" style="font-size: 2rem;"></i>
+                                        <p class="text-muted">{{ __('translate.no_next_controls') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Sections Row -->
+                    <div class="row mt-4">
+                        <!-- Hospitalization -->
+                        <div class="col-lg-6">
+                            <div class="clinical-section">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-hospital text-danger"></i> {{ __('translate.hospitalization') }}</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> {{ __('translate.new_hospitalization') }}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body">
+                                    <div class="empty-state text-center py-4">
+                                        <i class="fas fa-bed text-muted mb-2" style="font-size: 2rem;"></i>
+                                        <p class="text-muted">{{ __('translate.no_hospitalization_records') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Documents -->
+                        <div class="col-lg-6">
+                            <div class="clinical-section">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-file-alt text-info"></i> {{ __('translate.documents') }}</span>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body">
+                                    <div class="empty-state text-center py-4">
+                                        <i class="fas fa-file-times text-muted mb-2" style="font-size: 2rem;"></i>
+                                        <p class="text-muted">{{ __('translate.no_documents_available') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final Row - Grooming and Surgery -->
+                    <div class="row mt-4">
+                        <!-- Grooming Records -->
+                        <div class="col-lg-6">
+                            <div class="clinical-section">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-cut text-info"></i> {{ __('translate.grooming_records') }}</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> {{ __('translate.new_record') }}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body">
+                                    <div class="empty-state text-center py-4">
+                                        <i class="fas fa-scissors text-muted mb-2" style="font-size: 2rem;"></i>
+                                        <p class="text-muted">{{ __('translate.no_grooming_records_available') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Surgery Records -->
+                        <div class="col-lg-6">
+                            <div class="clinical-section">
+                                <div class="clinical-section-header">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span><i class="fas fa-procedures text-danger"></i> {{ __('translate.surgery_records') }}</span>
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-plus"></i> {{ __('translate.new_record') }}
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="clinical-section-body">
+                                    <div class="empty-state text-center py-4">
+                                        <i class="fas fa-user-md text-muted mb-2" style="font-size: 2rem;"></i>
+                                        <p class="text-muted">{{ __('translate.no_surgery_records_available') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Original sections hidden by default (can be toggled) -->
+                    <div class="row mt-4" id="original-sections" style="display: none;">
+                        <div class="col-lg-4">
+                            <div class="clinical-section problem-section">
+                                <div class="clinical-section-header">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    {{ __('translate.problem') }}
+                                </div>
+                                <div class="clinical-section-body">
+                                    @include('problems.index')
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="clinical-section prescription-section">
+                                <div class="clinical-section-header">
+                                    <i class="fas fa-pills"></i>
+                                    {{ __('translate.prescription') }}
+                                </div>
+                                <div class="clinical-section-body">
+                                    @include('prescriptions.index')
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="clinical-section examination-section">
+                                <div class="clinical-section-header">
+                                    <i class="fas fa-stethoscope"></i>
+                                    {{ __('translate.examination') }}
+                                </div>
+                                <div class="clinical-section-body">
+                                    @include('examinations.index')
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Toggle Button for Original Sections -->
+                    <div class="row mt-4">
+                        <div class="col-12 text-center">
+                            <button id="toggle-original" class="btn btn-outline-secondary">
+                                <i class="fas fa-cogs"></i> Mostrar secciones originales (problemas, prescripciones, exámenes)
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if( Auth::user()->hasAnyRolesByClinicId(['admin', 'veterinarian'], $clinic->id) )
+@include('owners.partials.overlay')
+@endif
+
+@endsection
+
+@push('scripts')
+<!-- Select2 -->
+<script type="text/javascript" src="{{url('/lib/select2/4.1.0-beta.1/dist/js/select2.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{url('/lib/select2/4.1.0-beta.1/dist/css/select2.min.css')}}" />
+
+<!-- DataTable -->
+<link rel="stylesheet" type="text/css" href="{{url('/lib/datatables/1.10.21/css/jquery.dataTables.min.css')}}" />
+<script type="text/javascript" src="{{url('/lib/datatables/1.10.21/js/jquery.dataTables.min.js')}}"></script>
+
+<!-- DatePicker -->
+<script type="text/javascript" src="{{url('/lib/bootstrap-datepicker/1.9.0/dist/js/bootstrap-datepicker.min.js')}}"
+    charset="UTF-8"></script>
+@if(auth()->user()->locale->id != 'en-US')
+<script type="text/javascript"
+    src="{{url('/lib/bootstrap-datepicker/1.9.0/dist/locales/bootstrap-datepicker.' . auth()->user()->locale->short_code . '.min.js')}}"
+    charset="UTF-8"></script>
+@endif
+<link rel="stylesheet" type="text/css"
+    href="{{url('/lib/bootstrap-datepicker/1.9.0/dist/css/bootstrap-datepicker.min.css')}}" />
+
+<!-- bootbox -->
+<script type="text/javascript" src="{{url('/lib/bootbox/5.4.0/bootbox.min.js')}}"></script>
+
+<!-- moment -->
+<script type="text/javascript" src="{{url('/lib/moment/2.27.0/moment-with-locales.js')}}"></script>
+
+<!-- animate.css -->
+<link rel="stylesheet" type="text/css" href="{{url('/lib/animate.css/4.1.0/animate.compat.css')}}" />
+
+<script type="text/javascript">
+    var problem_id = 0;
+    var diagnosis_id = 0;
+    var prescription = {};
+
+    $(function() {
+        // owner mobile & phone number overlay
+        $('#owner-overlay-modal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            $('#owner-overlay-modal-label').html( button.text() );
+        });
+
+        // Toggle original sections visibility
+        $('#toggle-original').click(function() {
+            var $originalSections = $('#original-sections');
+            var $button = $(this);
+            
+            if ($originalSections.is(':visible')) {
+                $originalSections.slideUp(500);
+                $button.html('<i class="fas fa-cogs"></i> Mostrar secciones originales (problemas, prescripciones, exámenes)');
+            } else {
+                $originalSections.slideDown(500);
+                $button.html('<i class="fas fa-eye-slash"></i> Ocultar secciones originales');
+            }
+        });
+
+        // Create simple weight chart
+        createWeightChart();
+
+        // Initialize anamnesis text areas for auto-resize
+        $('.anamnesis-tabs textarea').on('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+        });
+
+        // Add hover effect to clinical sections
+        $('.clinical-section').hover(
+            function() {
+                $(this).find('.clinical-section-header').addClass('shadow-sm');
+            },
+            function() {
+                $(this).find('.clinical-section-header').removeClass('shadow-sm');
+            }
+        );
+
+        // Save anamnesis data on blur
+        $('.anamnesis-tabs textarea').on('blur', function() {
+            var tabType = $(this).closest('.tab-pane').attr('id');
+            var content = $(this).val();
+            // Here you would save to the backend
+            console.log('Saving ' + tabType + ': ' + content);
+        });
+    });
+
+    // Function to create a simple weight chart
+    function createWeightChart() {
+        var canvas = document.getElementById('weight-chart');
+        if (canvas) {
+            var ctx = canvas.getContext('2d');
+            
+            // Sample weight data points
+            var weights = [14.2, 14.8, 15.1, 15.6, 15.6];
+            var dates = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb'];
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Set up chart dimensions
+            var padding = 20;
+            var chartWidth = canvas.width - (padding * 2);
+            var chartHeight = canvas.height - (padding * 2);
+            
+            // Find min and max values
+            var minWeight = Math.min(...weights) - 0.5;
+            var maxWeight = Math.max(...weights) + 0.5;
+            
+            // Draw chart background
+            ctx.fillStyle = '#f8f9fa';
+            ctx.fillRect(padding, padding, chartWidth, chartHeight);
+            
+            // Draw grid lines
+            ctx.strokeStyle = '#e9ecef';
+            ctx.lineWidth = 1;
+            for (var i = 0; i <= 4; i++) {
+                var y = padding + (i * chartHeight / 4);
+                ctx.beginPath();
+                ctx.moveTo(padding, y);
+                ctx.lineTo(padding + chartWidth, y);
+                ctx.stroke();
+            }
+            
+            // Draw weight line
+            ctx.strokeStyle = '#4caf50';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            for (var i = 0; i < weights.length; i++) {
+                var x = padding + (i * chartWidth / (weights.length - 1));
+                var y = padding + chartHeight - ((weights[i] - minWeight) / (maxWeight - minWeight)) * chartHeight;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+                
+                // Draw points
+                ctx.fillStyle = '#4caf50';
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+            ctx.stroke();
+        }
+    }
+
+    // Function to simulate weight data update
+    function updateWeight(newWeight) {
+        $('#current-weight').text(newWeight + ' kg');
+        // Redraw chart with new data
+        createWeightChart();
+    }
+
+</script>
+@endpush
