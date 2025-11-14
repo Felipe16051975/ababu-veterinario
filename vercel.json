@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/index.php",
-      "use": "vercel-php@0.6.0"
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.6.0"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(css|js|images|lib)/(.*)",
@@ -22,10 +21,5 @@
     "APP_DEBUG": "false",
     "APP_URL": "https://ababu-veterinario.vercel.app",
     "DB_CONNECTION": "mysql"
-  },
-  "functions": {
-    "api/index.php": {
-      "runtime": "vercel-php@0.6.0"
-    }
   }
 }
