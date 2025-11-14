@@ -1,17 +1,19 @@
+# Archivos de desarrollo que NO necesitamos en producción
 /.vscode
 /node_modules
-/public/hot
-/public/storage
-/storage/*.key
-/vendor
-/database/seeds/sql/VeNom/*
-/database/seeds/sql/animalia/*
-/database/seeds/sql/medicines/*
-/database/seeds/sql/develop/*
-.env
-.env.backup
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
+# COMENTAMOS LO QUE SÍ NECESITAMOS EN PRODUCCIÓN:
+# /public/hot
+# /public/storage  
+# /storage/*.key
+# /vendor  <- NECESARIO PARA LARAVEL
+# /database/seeds/sql/VeNom/*
+# /database/seeds/sql/animalia/*  
+# /database/seeds/sql/medicines/*
+# /database/seeds/sql/develop/*
+# .env  <- NECESARIO PARA CONFIGURACIÓN
