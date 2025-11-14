@@ -1,0 +1,16 @@
+# Vercel
+.vercel
+
+# Local Vercel CLI
+.env.local
+.env.production
+
+# Vercel build outputs
+.vercel/
+dist/
+
+# Vercel specific
+*.log
+
+# Keep the rest as needed for the project
+# but add Vercel-specific ignores
