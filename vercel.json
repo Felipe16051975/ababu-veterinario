@@ -1,7 +1,10 @@
 {
   "version": 2,
-  "buildCommand": "echo 'Build not needed'",
-  "installCommand": "echo 'Dependencies already included'",
+  "functions": {
+    "api/**/*.php": {
+      "runtime": "@vercel/php@0.4.0"
+    }
+  },
   "routes": [
     {
       "src": "/(css|js|images|lib)/(.*)",

@@ -1,0 +1,22 @@
+# VARIABLES DE ENTORNO PARA VERCEL - SUPABASE CONFIRMED
+# ====================================================
+# Copia estas variables exactas en Vercel Dashboard → Environment Variables
+
+APP_NAME=AbabuVeterinario
+APP_ENV=production
+APP_KEY=base64:iWMer7qYPW9sePpKwPEKhNkE38NxL6btMNjNjY46Wi4=
+APP_DEBUG=false
+APP_URL=https://ababu-veterinario.vercel.app
+DB_CONNECTION=pgsql
+DB_HOST=db.ugvywryylkraoryfnkvs.supabase.co
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres
+DB_PASSWORD=DaRuk112022
+SESSION_DRIVER=cookie
+CACHE_DRIVER=array
+LOG_CHANNEL=stderr
+QUEUE_CONNECTION=sync
+SESSION_LIFETIME=120
+BROADCAST_DRIVER=log
+FILESYSTEM_DRIVER=local
