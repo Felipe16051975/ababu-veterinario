@@ -1,0 +1,3 @@
+# InfinityFree no necesita Procfile
+# Este archivo es solo para documentación
+# InfinityFree usa Apache automáticamente
