@@ -1,31 +1,13 @@
 <?php
 
 /**
- * ABABU VETERINARIO - VERCEL ENTRY POINT
- * =====================================
- * 
- * Este archivo es el punto de entrada para Vercel.
- * Redirige todas las solicitudes a Laravel.
+ * ABABU VETERINARIO - VERCEL ENTRY POINT (Simplified)
+ * ===================================================
  */
 
-// Configurar rutas para Vercel
+// Configurar rutas básicas
 $_SERVER['DOCUMENT_ROOT'] = __DIR__ . '/../public';
+$_SERVER['SCRIPT_FILENAME'] = __DIR__ . '/../public/index.php';
 
-// Cargar autoloader de Composer
-require __DIR__ . '/../vendor/autoload.php';
-
-// Configurar aplicación Laravel
-$app = require_once __DIR__ . '/../bootstrap/app.php';
-
-// Crear kernel
-$kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
-
-// Procesar solicitud
-$request = Illuminate\Http\Request::capture();
-$response = $kernel->handle($request);
-
-// Enviar respuesta
-$response->send();
-
-// Terminar aplicación
-$kernel->terminate($request, $response);
+// Redirigir a la aplicación Laravel principal
+require __DIR__ . '/../public/index.php';
