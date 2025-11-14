@@ -15,11 +15,6 @@
       "dest": "api/index.php"
     }
   ],
-  "env": {
-    "APP_NAME": "Ababu Veterinario",
-    "APP_ENV": "production",
-    "APP_DEBUG": "false",
-    "APP_URL": "https://ababu-veterinario.vercel.app",
-    "DB_CONNECTION": "mysql"
-  }
+  "installCommand": "echo 'Dependencies already included'",
+  "buildCommand": "echo 'Build not needed'"
 }
