@@ -2,19 +2,17 @@
   "version": 2,
   "functions": {
     "api/index.php": {
-      "runtime": "vercel-php@0.7.0"
+      "runtime": "php-8.2"
     }
   },
   "routes": [
     {
       "src": "/(css|js|images|lib)/(.*)",
-      "dest": "public/$1/$2"
+      "dest": "/public/$1/$2"
     },
     {
       "src": "/(.*)",
-      "dest": "api/index.php"
+      "dest": "/api/index.php"
     }
-  ],
-  "installCommand": "echo 'Dependencies already included'",
-  "buildCommand": "echo 'Build not needed'"
+  ]
 }
