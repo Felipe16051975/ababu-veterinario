@@ -12,5 +12,38 @@ dist/
 # Vercel specific
 *.log
 
-# Keep the rest as needed for the project
-# but add Vercel-specific ignores
+# Development files
+.vscode
+.idea
+.phpunit.result.cache
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# Tests
+tests/
+phpunit.xml
+
+# Documentation
+*.md
+!README.md
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.styleci.yml
+
+# Deployment scripts
+*.sh
+*.bat
+
+# Temporary files
+/tmp
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
