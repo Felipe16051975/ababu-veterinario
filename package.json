@@ -13,7 +13,7 @@
         "install": "echo 'Dependencies already included'"
     },
     "engines": {
-        "node": "22.x"
+        "node": "18.x"
     },
     "devDependencies": {}
 }
