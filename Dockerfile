@@ -30,8 +30,8 @@ COPY . .
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Instalar dependencias de PHP
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Instalar dependencias de PHP (ignorar temporalmente requisito de GD durante build)
+RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-req=ext-gd
 
 # Configurar permisos
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
