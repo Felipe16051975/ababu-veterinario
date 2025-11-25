@@ -1,4 +1,5 @@
 FROM php:8.1-apache
+# Build: 2025-11-25 16:05 - Force rebuild with GD extension
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
