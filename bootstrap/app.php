@@ -1,5 +1,10 @@
 <?php
 
+// PARCHE CRÍTICO VERCEL: Suprimir errores de depreciación PHP 8.1+
+// Debe estar ANTES de cualquier autoload o clase de Laravel
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
+ini_set('display_errors', '0');
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
