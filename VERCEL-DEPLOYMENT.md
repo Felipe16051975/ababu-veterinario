@@ -21,12 +21,12 @@ APP_KEY=base64:TU_CLAVE_AQUÍ
 APP_DEBUG=false
 APP_URL=https://tu-proyecto.vercel.app
 
-# Base de datos (PlanetScale recomendado)
-DB_CONNECTION=mysql
-DB_HOST=tu-host-planetscale.psdb.cloud
-DB_PORT=3306
-DB_DATABASE=tu-database
-DB_USERNAME=tu-username
+# Base de datos (Supabase PostgreSQL)
+DB_CONNECTION=pgsql
+DB_HOST=aws-0-us-west-2.pooler.supabase.com
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=postgres.tu-usuario
 DB_PASSWORD=tu-password
 
 # Session y Cache
@@ -39,18 +39,16 @@ LOG_CHANNEL=stderr
 BROADCAST_DRIVER=log
 ```
 
-### 🗄️ **PASO 3: CONFIGURAR BASE DE DATOS**
+### 🗄️ **PASO 3: CONFIGURAR BASE DE DATOS (SUPABASE)**
 
-#### **Opción A: PlanetScale (Recomendado)**
-1. Crear cuenta en [https://planetscale.com](https://planetscale.com)
-2. Crear nueva base de datos
-3. Obtener string de conexión
-4. Agregar credenciales a Vercel
+#### **Opción Recomendada: Supabase (PostgreSQL)**
+1. Crea una cuenta en [https://supabase.com](https://supabase.com)
+2. Crea un nuevo proyecto (Free Tier)
+3. Ve a **Project Settings > Database**
+4. En la sección "Connection Pooling", habilita el pooler (Mode: Session)
+5. Copia los datos de conexión para usar en Vercel (Host, User, Password, Port 5432 o 6543).
 
-#### **Opción B: Railway MySQL**
-1. Cuenta en [https://railway.app](https://railway.app)
-2. Crear servicio MySQL
-3. Copiar credenciales de conexión
+> **Nota:** Es importante usar el **Session Pooler** para evitar problemas de conexión en entornos serverless como Vercel.
 
 ### 🔧 **PASO 4: CONFIGURACIÓN AUTOMÁTICA**
 
@@ -88,35 +86,40 @@ Copia el resultado a las variables de entorno de Vercel.
 - Comprobar `APP_URL` en variables de entorno
 
 #### **Base de datos no conecta**
-- Verificar credenciales de PlanetScale/Railway
-- Comprobar SSL y configuraciones especiales
+- Verificar credenciales de Supabase
+- Asegurarse de usar el puerto del Pooler (5432 o 6543) y no el directo si hay problemas de IPv6.
 
 ### 📝 **COMANDOS POST-DEPLOY**
 
 Para migrar la base de datos (ejecutar localmente con conexión remota):
 ```bash
-# Configurar .env con credenciales remotas temporalmente
+# Configurar .env local con credenciales remotas de Supabase temporalmente
 php artisan migrate --force
 php artisan db:seed --force
 ```
 
-### 🎉 **VENTAJAS DE VERCEL**
+> **⚠️ IMPORTANTE: USUARIO ROOT**
+> Al ejecutar `db:seed`, se creará un usuario administrador `root@ababu.cloud`.
+> **La contraseña se mostrará en la consola/terminal al finalizar el comando.**
+> ¡Asegúrate de copiarla!
 
-✅ **Deploy automático** desde GitHub  
-✅ **SSL gratis** incluido  
-✅ **CDN global** para mejor rendimiento  
-✅ **Escalabilidad automática**  
-✅ **Logs en tiempo real**  
-✅ **Dominios personalizados** gratis  
+### 🎉 **VENTAJAS DE VERCEL + SUPABASE**
+
+✅ **Deploy automático** desde GitHub
+✅ **Base de datos PostgreSQL estable** (Supabase)
+✅ **SSL gratis** incluido
+✅ **CDN global** para mejor rendimiento
+✅ **Escalabilidad automática**
+✅ **Logs en tiempo real**
 
 ### 📞 **SOPORTE**
 
 - **Vercel Docs:** https://vercel.com/docs
-- **PlanetScale:** https://planetscale.com/docs
+- **Supabase Docs:** https://supabase.com/docs
 - **Laravel Vercel:** https://laravel.com/docs/7.x/deployment
 
 ---
 
 ## 🚀 **¡LISTO PARA DESPEGAR!**
 
-Tu aplicación Ababu está configurada para funcionar perfectamente en Vercel. Solo sigue los pasos y tendrás tu sistema veterinario online en minutos.
+Tu aplicación Ababu está configurada para funcionar perfectamente en Vercel con Supabase. Solo sigue los pasos y tendrás tu sistema veterinario online en minutos.
