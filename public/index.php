@@ -7,6 +7,10 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+// Parche crítico para Vercel (PHP 8.1+)
+// Suprime errores de depreciación antes de que Laravel arranque
+error_reporting(E_ALL ^ E_DEPRECATED);
+
 define('LARAVEL_START', microtime(true));
 
 /*
