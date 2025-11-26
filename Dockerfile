@@ -28,8 +28,9 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 WORKDIR /var/www/html
 COPY . .
 
-# Crear .env directamente (sin espacios problemáticos)
-RUN echo "APP_NAME=AbabuVeterinario" > .env && \
+# Eliminar CUALQUIER archivo .env existente y crear uno limpio
+RUN rm -f .env .env.* && \
+    echo "APP_NAME=AbabuVeterinario" > .env && \
     echo "APP_ENV=production" >> .env && \
     echo "APP_KEY=base64:iWMer7qYPW9sePpKwPEKhNkE38NxL6btMNjNjY46Wi4=" >> .env && \
     echo "APP_DEBUG=false" >> .env && \
