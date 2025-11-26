@@ -28,8 +28,25 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 WORKDIR /var/www/html
 COPY . .
 
-# Copiar .env para Railway (sin comillas problemáticas)
-COPY .env.railway .env
+# Crear .env directamente (sin espacios problemáticos)
+RUN echo "APP_NAME=AbabuVeterinario" > .env && \
+    echo "APP_ENV=production" >> .env && \
+    echo "APP_KEY=base64:iWMer7qYPW9sePpKwPEKhNkE38NxL6btMNjNjY46Wi4=" >> .env && \
+    echo "APP_DEBUG=false" >> .env && \
+    echo "APP_URL=https://ababu-veterinario-production.up.railway.app" >> .env && \
+    echo "LOG_CHANNEL=stderr" >> .env && \
+    echo "DB_CONNECTION=pgsql" >> .env && \
+    echo "DB_HOST=aws-1-us-east-1.pooler.supabase.com" >> .env && \
+    echo "DB_PORT=6543" >> .env && \
+    echo "DB_DATABASE=postgres" >> .env && \
+    echo "DB_USERNAME=postgres.qkrrychqmnbpsulfhsxd" >> .env && \
+    echo "DB_PASSWORD=DaaRuk" >> .env && \
+    echo "PGSSLMODE=require" >> .env && \
+    echo "BROADCAST_DRIVER=log" >> .env && \
+    echo "CACHE_DRIVER=array" >> .env && \
+    echo "QUEUE_CONNECTION=sync" >> .env && \
+    echo "SESSION_DRIVER=cookie" >> .env && \
+    echo "SESSION_LIFETIME=120" >> .env
 
 # Instalar Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
