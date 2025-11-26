@@ -1,5 +1,5 @@
 FROM php:8.1-apache
-# Build: 2025-11-26 01:45 - Inline migrations, force rebuild v2
+# Build: 2025-11-26 01:50 - Shell script approach v3
 
 # Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
@@ -41,6 +41,10 @@ RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 # Configurar ServerName para Apache (eliminar warning)
 RUN echo "ServerName ababu-veterinario.railway.app" >> /etc/apache2/apache2.conf
 
+# Copiar y configurar script de inicio
+COPY startup.sh /usr/local/bin/startup.sh
+RUN chmod +x /usr/local/bin/startup.sh
+
 # Healthcheck para verificar estado de la aplicación
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost/ || exit 1
@@ -48,13 +52,8 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
 # Exponer puerto 80
 EXPOSE 80
 
-# Comando de inicio con migraciones (inline para asegurar que funcione)
-CMD bash -c "echo '🚀 Iniciando Ababu...' && \
-    php artisan config:clear && \
-    php artisan cache:clear && \
-    echo '📊 Ejecutando migraciones...' && \
-    php artisan migrate --force && \
-    echo '✅ Migraciones completadas. Iniciando Apache...' && \
-    apache2-foreground"
+# Comando de inicio
+CMD ["/usr/local/bin/startup.sh"]
+
 
 
