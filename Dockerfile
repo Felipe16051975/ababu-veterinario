@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
+    curl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_pgsql zip gd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -37,8 +38,20 @@ RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-pl
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Configurar ServerName para Apache (eliminar warning)
+RUN echo "ServerName ababu-veterinario.railway.app" >> /etc/apache2/apache2.conf
+
+# Copiar script de inicio
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Healthcheck para verificar estado de la aplicación
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost/ || exit 1
+
 # Exponer puerto 80
 EXPOSE 80
 
-# Comando de inicio
-CMD ["apache2-foreground"]
+# Comando de inicio con migraciones
+CMD ["docker-entrypoint.sh"]
+

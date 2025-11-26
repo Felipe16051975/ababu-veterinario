@@ -1,20 +1,25 @@
 <?php return array (
   'barryvdh/laravel-dompdf' => 
   array (
+    'aliases' => 
+    array (
+      'PDF' => 'Barryvdh\\DomPDF\\Facade\\Pdf',
+      'Pdf' => 'Barryvdh\\DomPDF\\Facade\\Pdf',
+    ),
     'providers' => 
     array (
       0 => 'Barryvdh\\DomPDF\\ServiceProvider',
     ),
+  ),
+  'facade/ignition' => 
+  array (
     'aliases' => 
     array (
-      'PDF' => 'Barryvdh\\DomPDF\\Facade',
+      'Flare' => 'Facade\\Ignition\\Facades\\Flare',
     ),
-  ),
-  'fideloper/proxy' => 
-  array (
     'providers' => 
     array (
-      0 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
+      0 => 'Facade\\Ignition\\IgnitionServiceProvider',
     ),
   ),
   'fruitcake/laravel-cors' => 
@@ -43,6 +48,13 @@
     'providers' => 
     array (
       0 => 'Carbon\\Laravel\\ServiceProvider',
+    ),
+  ),
+  'nunomaduro/collision' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
   'simplesoftwareio/simple-qrcode' => 

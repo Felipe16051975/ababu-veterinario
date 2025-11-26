@@ -25,14 +25,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-// AwardSpace: Ajustar rutas para hosting compartido
-$autoloader = __DIR__.'/../ababu/vendor/autoload.php';
-if (file_exists($autoloader)) {
-    require $autoloader;
-} else {
-    // Fallback para estructura estándar
-    require __DIR__.'/../vendor/autoload.php';
-}
+require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -46,14 +39,7 @@ if (file_exists($autoloader)) {
 |
 */
 
-// AwardSpace: Ajustar rutas para hosting compartido
-$app_bootstrap = __DIR__.'/../ababu/bootstrap/app.php';
-if (file_exists($app_bootstrap)) {
-    $app = require_once $app_bootstrap;
-} else {
-    // Fallback para estructura estándar
-    $app = require_once __DIR__.'/../bootstrap/app.php';
-}
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------

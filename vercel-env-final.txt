@@ -1,23 +1,12 @@
-# VARIABLES DE ENTORNO PARA VERCEL - SUPABASE SESSION POOLER (IPv4 COMPATIBLE)
-# ===============================================================================
-# Copia estas variables exactas en Vercel Dashboard → Environment Variables
-
-APP_NAME=AbabuVeterinario
-APP_ENV=production
-APP_KEY=base64:iWMer7qYPW9sePpKwPEKhNkE38NxL6btMNjNjY46Wi4=
-APP_DEBUG=false
-APP_URL=https://ababu-veterinario.vercel.app
 DB_CONNECTION=pgsql
-DB_HOST=aws-0-us-west-2.pooler.supabase.com
-DB_PORT=5432
+DB_HOST=aws-1-us-east-1.pooler.supabase.com
+DB_PORT=6543
 DB_DATABASE=postgres
-DB_USERNAME=postgres.ugvywryylkraoryfnkvs
-DB_PASSWORD=daruk11202220
-DATABASE_URL=postgresql://postgres.ugvywryylkraoryfnkvs:daruk11202220@aws-0-us-west-2.pooler.supabase.com:5432/postgres
+DB_USERNAME=postgres.qkrrychqmnbpsulfhsxd
+DB_PASSWORD=DaaRuk#112022
+APP_KEY=base64:UjM5N3c4N3c4N3c4N3c4N3c4N3c4N3c4N3c4N3c4N3c=
+APP_DEBUG=true
+APP_URL=
 SESSION_DRIVER=cookie
 CACHE_DRIVER=array
 LOG_CHANNEL=stderr
-QUEUE_CONNECTION=sync
-SESSION_LIFETIME=120
-BROADCAST_DRIVER=log
-FILESYSTEM_DRIVER=local
