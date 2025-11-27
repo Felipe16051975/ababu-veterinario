@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
+    dos2unix \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install pdo pdo_pgsql zip gd \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -64,6 +65,7 @@ RUN echo "ServerName ababu-veterinario.railway.app" >> /etc/apache2/apache2.conf
 
 # Copiar y configurar script de inicio
 COPY startup.sh /usr/local/bin/startup.sh
+RUN dos2unix /usr/local/bin/startup.sh
 RUN chmod +x /usr/local/bin/startup.sh
 
 # Healthcheck para verificar estado de la aplicación
