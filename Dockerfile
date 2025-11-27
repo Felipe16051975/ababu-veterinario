@@ -38,7 +38,7 @@ RUN rm -f .env .env.* && \
     echo "LOG_CHANNEL=stderr" >> .env && \
     echo "DB_CONNECTION=pgsql" >> .env && \
     echo "DB_HOST=aws-1-us-east-1.pooler.supabase.com" >> .env && \
-    echo "DB_PORT=6543" >> .env && \
+    echo "DB_PORT=5432" >> .env && \
     echo "DB_DATABASE=postgres" >> .env && \
     echo "DB_USERNAME=postgres.qkrrychqmnbpsulfhsxd" >> .env && \
     echo "DB_PASSWORD=DaaRuk112022AbaBu" >> .env && \
