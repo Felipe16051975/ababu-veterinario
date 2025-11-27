@@ -14,5 +14,8 @@ else
     echo "❌ Error al ejecutar migraciones"
 fi
 
+echo "🌱 Ejecutando seeders (poblado de datos)..."
+php artisan db:seed --force || echo "⚠️ Advertencia: Algunos seeders pudieron fallar o ya existían datos."
+
 echo "Iniciando Apache..."
 exec apache2-foreground

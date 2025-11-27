@@ -12,8 +12,7 @@ class LocalesTableSeeder extends Seeder
      */
     public function run()
     {
-        Locale::create([
-            'id' => 'es-ES',
+        Locale::firstOrCreate(['id' => 'es-ES'], [
             'short_code' => 'es',
             'language' => 'es',
             'description' => 'Español (España)',
@@ -24,8 +23,7 @@ class LocalesTableSeeder extends Seeder
             'time_long_format' => 'H:i:s',
         ]);
 
-        Locale::create([
-            'id' => 'en-US',
+        Locale::firstOrCreate(['id' => 'en-US'], [
             'short_code' => 'en',
             'language' => 'en',
             'description' => 'English (United States)',
@@ -36,8 +34,7 @@ class LocalesTableSeeder extends Seeder
             'time_long_format' => 'H:i:s',
         ]);
 
-        Locale::create([
-            'id' => 'en-GB',
+        Locale::firstOrCreate(['id' => 'en-GB'], [
             'short_code' => 'en-gb',
             'language' => 'en',
             'description' => 'English (Great Britain)',
@@ -48,8 +45,7 @@ class LocalesTableSeeder extends Seeder
             'time_long_format' => 'H:i:s',
         ]);
 
-        Locale::create([
-            'id' => 'it-IT',
+        Locale::firstOrCreate(['id' => 'it-IT'], [
             'short_code' => 'it',
             'language' => 'it',
             'description' => 'Italiano',
@@ -60,8 +56,7 @@ class LocalesTableSeeder extends Seeder
             'time_long_format' => 'H:i:s',
         ]);
 
-        Locale::create([
-            'id' => 'fr-BE',
+        Locale::firstOrCreate(['id' => 'fr-BE'], [
             'short_code' => 'fr-be',
             'language' => 'fr',
             'description' => 'French (Belgium)',
@@ -72,8 +67,7 @@ class LocalesTableSeeder extends Seeder
             'time_long_format' => 'H:i:s',
         ]);
 
-        Locale::create([
-            'id' => 'en-UG',
+        Locale::firstOrCreate(['id' => 'en-UG'], [
             'short_code' => 'en-ug',
             'language' => 'en',
             'description' => 'English (Uganda)',
