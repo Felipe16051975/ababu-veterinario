@@ -41,7 +41,7 @@ RUN rm -f .env .env.* && \
     echo "DB_PORT=6543" >> .env && \
     echo "DB_DATABASE=postgres" >> .env && \
     echo "DB_USERNAME=postgres.qkrrychqmnbpsulfhsxd" >> .env && \
-    echo "DB_PASSWORD=DaaRuk" >> .env && \
+    echo "DB_PASSWORD=DaaRuk112022AbaBu" >> .env && \
     echo "PGSSLMODE=require" >> .env && \
     echo "BROADCAST_DRIVER=log" >> .env && \
     echo "CACHE_DRIVER=array" >> .env && \
